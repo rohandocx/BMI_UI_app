@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'containerIcon.dart';
@@ -5,6 +7,7 @@ import 'reusable.dart';
 import 'Constants.dart';
 
 enum Gender { male, female }
+int height = 180;
 
 class InputPage extends StatefulWidget {
   @override
@@ -59,18 +62,33 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Reusable(colour: Color(0xFF1D1E3E),
               cardchildcontainer: Column(
-
+                   mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('Height',
-                  style:  labelstyle,
+                  style: labelstyle,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline:  TextBaseline.alphabetic,
                     children: <Widget>[
-                      Text('180',
+                      Text(height.toString(),
                         style: Boldtext,
                       ),
+                      Text('cm', style: labelstyle,),
                     ],
-                  )
+                  ),
+                  Slider(value: height.toDouble(),
+                      min: 120.0,
+                      max:  220.0,
+                      activeColor: Color(0xFFEB1555),
+                      inactiveColor:  Color(0xFF8D8E98),
+                      onChanged: (double newValue) {
+                        setState(() {
+                         height = newValue.round();
+                        });
+                      },
+                  ),
                 ],
               ),
               ),
