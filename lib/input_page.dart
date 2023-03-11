@@ -10,8 +10,8 @@ import 'Constants.dart';
 enum Gender { male, female }
 
 int height = 180;
-int weight = 20;
-
+int weight = 0;
+int age =0 ;
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -130,9 +130,23 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                           RoundedButton(icon: FontAwesomeIcons.minus),
+                            RoundedButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
                             SizedBox(width: 30.0),
-                            RoundedButton(icon: FontAwesomeIcons.plus),
+                            RoundedButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -146,16 +160,30 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Height',
+                          'Age',
                           style: labelstyle,
                         ),
-                        Text(weight.toString(), style: Boldtext),
+                        Text(age.toString(), style: Boldtext),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RoundedButton(icon: FontAwesomeIcons.minus),
+                            RoundedButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
                             SizedBox(width: 30.0),
-                            RoundedButton(icon: FontAwesomeIcons.plus),
+                            RoundedButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -175,37 +203,22 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-
 class RoundedButton extends StatelessWidget {
-   RoundedButton({this.icon});
-
-   final IconData icon;
+  RoundedButton({this.icon, this.onpressed});
+  final Function onpressed;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(icon),
-         elevation: 6.0,
-         onPressed: (){},
+      elevation: 6.0,
+      onPressed: onpressed,
       constraints: BoxConstraints.tightFor(
         height: 56.0,
-        width:56.0,
+        width: 56.0,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       fillColor: Color(0xFF4C45E),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
