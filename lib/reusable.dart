@@ -16,6 +16,7 @@ class Reusable extends StatelessWidget {
         decoration: BoxDecoration(
           color: colour,
           borderRadius: BorderRadius.circular(15.0),
+
         ),
       ),
     );

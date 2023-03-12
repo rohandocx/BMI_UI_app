@@ -30,5 +30,15 @@ const kresult_style = TextStyle(
   fontWeight: FontWeight.w900,
   color: Colors.green,
 );
+const kbmi = TextStyle(
+  fontWeight: FontWeight.w900,
+  fontSize: 80.0,
+
+);
+
+const kstatement = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 25.0,
+);
 
 
