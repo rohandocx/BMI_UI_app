@@ -37,7 +37,7 @@ const kbmi = TextStyle(
 );
 
 const kstatement = TextStyle(
-  fontWeight: FontWeight.w500,
+
   fontSize: 25.0,
 );
 

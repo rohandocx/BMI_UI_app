@@ -1,13 +1,22 @@
+
 import 'package:bmi_calculator/reusable.dart';
 import 'package:flutter/material.dart';
 import 'Constants.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({@required this.bmiresult,@required this.interpretation,@required this.resultText});
+
+    final String bmiresult ;
+    final String interpretation;
+    final String resultText;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -15,6 +24,8 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: Container(
+                padding: EdgeInsets.all(15.0),
+            alignment: Alignment.center,
             child: Text(
               'Your Result',
               style: Result_style,
@@ -29,23 +40,38 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'OVERWEIGHT',
+                    resultText.toUpperCase(),
                     style: kresult_style,
                   ),
                   Text(
-                    '25',
+                    bmiresult,
                     style: kbmi,
                   ),
                   Text(
-                    'Your bmi is quite low you should eat more! ',
+                   interpretation,
                     textAlign: TextAlign.center,
                     style: kstatement,
                   )
                 ],
+
               ),
             ),
           ),
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, '/');
+            },
+            child: Container(
+              child: Center(child: Text(' RE-CALCULATE', style: bottombuttonstyles,)),
+              color: bottomcolorcontainer,
+              padding: EdgeInsets.only(bottom: 10.0),
+              height: bottomcontainerheight,
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 10.0),
+            ),
+          ),
         ],
+
       ),
     );
   }

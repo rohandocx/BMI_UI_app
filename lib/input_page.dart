@@ -1,17 +1,17 @@
-import 'dart:io';
-
-import 'package:bmi_calculator/input_page.dart';
+import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'containerIcon.dart';
 import 'reusable.dart';
 import 'Constants.dart';
+import 'Bmi_brain.dart';
 
 enum Gender { male, female }
 
 int height = 180;
 int weight = 0;
-int age =0 ;
+int age = 0;
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -193,19 +193,30 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
             GestureDetector(
-              onTap: (){
-               Navigator.pushNamed(context, '/second');
+              onTap: () {
+                Bmi_brain calc = Bmi_brain(weight: weight, height: height);
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultsPage(
+                              bmiresult: calc.calculateBMI(),
+                              resultText: calc.getResult(),
+                              interpretation: calc.getInterpretation(),
+                            )));
               },
-          
-                child: Container(
-                  child: Center(child: Text('CALCULATE', style: bottombuttonstyles,)),
-                  color: bottomcolorcontainer,
-                  padding: EdgeInsets.only(bottom: 10.0),
-                  height: bottomcontainerheight,
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 10.0),
-                ),
-            
+              child: Container(
+                child: Center(
+                    child: Text(
+                  'CALCULATE',
+                  style: bottombuttonstyles,
+                )),
+                color: bottomcolorcontainer,
+                padding: EdgeInsets.only(bottom: 10.0),
+                height: bottomcontainerheight,
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 10.0),
+              ),
             ),
           ],
         ));
