@@ -196,13 +196,16 @@ class _InputPageState extends State<InputPage> {
               onTap: (){
                Navigator.pushNamed(context, '/second');
               },
-              child: Container(
-                child: Text('Calculate'),
-                color: bottomcolorcontainer,
-                height: bottomcontainerheight,
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 10.0),
-              ),
+          
+                child: Container(
+                  child: Center(child: Text('CALCULATE', style: bottombuttonstyles,)),
+                  color: bottomcolorcontainer,
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  height: bottomcontainerheight,
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 10.0),
+                ),
+            
             ),
           ],
         ));

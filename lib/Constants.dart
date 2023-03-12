@@ -16,3 +16,19 @@ const Boldtext = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
+const bottombuttonstyles = TextStyle(
+  fontWeight: FontWeight.w900,
+  fontSize:  25.0,
+);
+
+const Result_style = TextStyle(
+  fontWeight: FontWeight.w900,
+  fontSize:  45.0,
+);
+const kresult_style = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.w900,
+  color: Colors.green,
+);
+
+
